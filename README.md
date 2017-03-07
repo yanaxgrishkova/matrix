@@ -1,6 +1,6 @@
 # matrix
 
-[![Build Status](https://travis-ci.org/simplydesigner/magic_box.svg?branch=master)](https://travis-ci.org/simplydesigner/magic_box)
+[![Build Status](https://travis-ci.org/justcppdeveloper/matrix.svg?branch=master)](https://travis-ci.org/justcppdeveloper/matrix)
 
 ```bash
 tools/build.sh #{PROJECT_NAME}
