@@ -1,6 +1,6 @@
 #include "matrix.hpp"
 
-matrix_t::matrix_t() noexcept : rows_{0}, columns_{0}, elements_{nullptr}
+matrix_t::matrix_t() noexcept : rows_{0}, columns_{1}, elements_{nullptr}
 {
 }
 
