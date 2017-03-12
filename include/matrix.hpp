@@ -1,13 +1,21 @@
 #include <iostream>
 
-class matrix_t final
+using namespace std;
+
+class Matrix
 {
 private:
-    unsigned int rows_;
-    unsigned int columns_;
-    int** elements_;
+	int line, column;
+	int**A;
+
 public:
-    matrix_t() noexcept;
-    auto rows() -> unsigned int;
-    auto columns() -> unsigned int;
+	Matrix();
+	Matrix(int, int);
+	Matrix(const Matrix &C);
+	~Matrix();
+	void scan(string)const;
+	void print(ostream&steam)const;
+	Matrix& operator= (const Matrix &C);
+	Matrix operator+ (Matrix B)const;
+	Matrix operator * (Matrix B)const;
 };
