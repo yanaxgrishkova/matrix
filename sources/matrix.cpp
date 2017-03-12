@@ -42,7 +42,7 @@ Matrix::~Matrix()
 	delete[]A;
 }
 
-Matrix::void scan(string filename)const
+void Matrix::scan(string filename)const
 {
 	ifstream fin;
 	fin.open(filename);
@@ -57,14 +57,15 @@ Matrix::void scan(string filename)const
 				if (!fin.eof())
 				{
 					fin >> A[i][j];
-				}else A[i][j] = 0;
+				}
+				else A[i][j] = 0;
 			}
 		}
 	}
 	fin.close();
 }
 
-Matrix::void print(ostream&steam)const
+void Matrix::print(ostream&steam)const
 {
 	for (int i = 0; i < line; ++i)
 	{
@@ -74,7 +75,33 @@ Matrix::void print(ostream&steam)const
 	}
 }
 
-Matrix& Matrix:: operator= (const Matrix &C)
+Matrix Matrix::operator + (Matrix B)const
+{
+	Matrix C(line, column);
+	for (int i = 0; i < line; ++i)
+	{
+		for (int j = 0; j < column; ++j)
+			C.A[i][j] = A[i][j] + B.A[i][j];
+	}
+	return C;
+}
+
+Matrix Matrix::operator * (Matrix B)const
+{
+	Matrix C(line, B.column);
+	for (int i = 0; i < line; ++i)
+	for (int j = 0; j < B.column; ++j)
+	{
+		C.A[i][j] = 0;
+		for (int k = 0; k < column; ++j)
+		{
+			C.A[i][j] = C.A[i][j] + A[i][k] * B.A[k][j];
+		}
+	}
+	return C;
+}
+
+Matrix& Matrix:: operator = (const Matrix &C)
 {
 	if (&C == this)
 		return *this;
@@ -93,7 +120,7 @@ Matrix& Matrix:: operator= (const Matrix &C)
 	return *this;
 }
 
-const bool Matrix::operator==(const Matrix &C)
+const bool Matrix::operator == (const Matrix &C)
 {
 	for (int i = 0; i < line; ++i)
 	for (int j = 0; j < column; ++j)
@@ -104,28 +131,18 @@ const bool Matrix::operator==(const Matrix &C)
 	}
 }
 
-Matrix::Matrix operator+ (Matrix B)const
+ostream& operator << (ostream &out, Matrix &C)
 {
-	Matrix C(line, column);
-	for (int i = 0; i < line; ++i)
-	{
-		for (int j = 0; j < column; ++j)
-			C.A[i][j] = A[i][j] + B.A[i][j];
-	}
-	return C;
+	C.print(out);
+	return out;
 }
 
-Matrix::Matrix operator * (Matrix B)const
+istream& operator >> (istream &in, Matrix &C)
 {
-	Matrix C(line, column);
-	for (int i = 0; i < line; ++i)
-	for (int j = 0; j < B.column; ++j)
-	{
-		C.A[i][j] = 0;
-		for (int k = 0; k < column; ++j)
-			C.A[i][j] += A[i][k] * B.A[k][j];
-	}
-	return C;
+	for (int i = 0; i < C.line; ++i)
+	for (int j = 0; j < C.column; ++j)
+		in >> C.A[i][j];
+	return in;
 }
 
 int main()
@@ -138,21 +155,17 @@ int main()
 	cout << "Enter the number of columns ";
 	cin >> column;
 	m1 = m2 = Matrix(line, column);
-	cout << "Enter the file name for the first matrix" << endl;
-	cin >> filename;
-	m1.scan(filename);
-	filename = "";
-	cout << "Enter the file name for the second matrix" << endl;
-	cin >> filename;
-	m2.scan(filename);
-	filename = "";
+	cout << "Enter elements of the first matrix";
+	cin >> m1;
+	cout << "Enter elements of the second matrix";
+	cin >> m2;
 	cout << endl << "The first matrix" << endl;
-	m1.print(cout);
+	cout << m1;
 	cout << endl << "The second matrix" << endl;
-	m2.print(cout);
+	cout << m2;
 	m1 = m1 + m2;
 	cout << endl << "Result" << endl;
-	m1.print(cout);
+	cout << m1;
 	cout << endl << endl << "MULTIPLICATION" << endl << "Enter the number of lines of the first matrix ";
 	cin >> line;
 	cout << "Enter the number of columns of the first matrix (the number of lines of the second matrix) ";
@@ -162,20 +175,17 @@ int main()
 	cout << "Enter the number of columns of the second matrix ";
 	cin >> column;
 	m2 = Matrix(line, column);
-	cout << "Enter the file name for the first matrix" << endl;
-	cin >> filename;
-	m1.scan(filename);
-	filename = "";
-	cout << "Enter the file name for the second matrix" << endl;
-	cin >> filename;
-	m2.scan(filename);
-	cout << "The first matrix" << endl;
-	m1.print(cout);
-	cout << "The second matrix" << endl;
-	m2.print(cout);
+	cout << endl << "The first matrix" << endl;
+	cout << m1;
+	cout << endl << "The second matrix" << endl;
+	cout << m2;
+	cout << endl << "The first matrix" << endl;
+	cout << m1;
+	cout << endl << "The second matrix" << endl;
+	cout << m2;
 	m1 = m1*m2;
-	cout << "Result" << endl;
-	m1.print(cout);
+	cout << endl << "Result" << endl;
+	cout << m1;
 	system("pause");
 	return 0;
 }
