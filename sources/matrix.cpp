@@ -1,4 +1,7 @@
 #include "matrix.hpp"
+#include <string>
+#include <fstream>
+using namespace std;
 
 Matrix::Matrix()
 {
