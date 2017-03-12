@@ -74,15 +74,34 @@ Matrix::void print(ostream&steam)const
 	}
 }
 
-Matrix::Matrix& operator= (const Matrix &C)
+Matrix& Matrix:: operator= (const Matrix &C)
 {
-       for (int i = 0; i < line; ++i)
+	if (&C == this)
+		return *this;
+	for (int i = 0; i < line; ++i)
 		delete[]A[i];
 	delete[]A;
-	for(int i = 0; i < line; ++i)
-           for(int j = 0; j < column; ++j)
-               a[i][j] = C.A[i][j];
-       return *this;
+	A = new int*[C.line];
+	for (int i = 0; i < C.line; ++i)
+	{
+		A[i] = new int[C.column];
+		for (int j = 0; j < C.column; ++j)
+			A[i][j] = C.A[i][j];
+	}
+	line = C.line;
+	column = C.column;
+	return *this;
+}
+
+const bool Matrix::operator==(const Matrix &C)
+{
+	for (int i = 0; i < line; ++i)
+	for (int j = 0; j < column; ++j)
+	{
+		if (A[i][j] == C.A[i][j])
+			return true;
+		return false;
+	}
 }
 
 Matrix::Matrix operator+ (Matrix B)const
