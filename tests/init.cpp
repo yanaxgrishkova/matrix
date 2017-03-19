@@ -45,5 +45,32 @@ SCENARIO("*", "[init]")
 	REQUIRE((A * B) == D);
 }
 				
+SCENARIO("scan", "[init]")
+{
+	Matrix A(2, 2);
+	Matrix B(A);
+	std::ifstream("A.txt") >> A;
+	B.scan("A.txt");
+	REQUIRE(A == B);
+}
 
+SCENARIO("==", [init])
+{
+	Matrix A(2, 2);
+	Matrix B(2, 2);
+	bool f;
+	std::ifstream("A.txt") >> A;
+	std::ifstream("A.txt") >> B;
+	if (A == B)
+		f = true;
+	REQUIRE(f == true);
+}
 
+SCENARIO("=", [init])
+{
+	Matrix A(2, 2);
+	Matrix B;
+	std::ifstream("A.txt") >> A;
+	B = A;
+	REQUIRE(A == B);
+}
