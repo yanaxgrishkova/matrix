@@ -26,18 +26,18 @@ SCENARIO("copy", "[init]")
 SCENARIO("+", "[init]")
 {
 	Matrix A, B, C;
-	ifstream ("A.txt") >> A;
-	ifstream ("B.txt") >> B;
-	ifstream ("A+B.txt") >> C;
+	std::ifstream ("A.txt") >> A;
+	std::ifstream ("B.txt") >> B;
+	std::ifstream ("A+B.txt") >> C;
 	REQUIRE((A + B) == C);
 }
 
 SCENARIO("*", "[init]")
 {
 	Matrix A, B, D;
-	ifstream ("A.txt") >> A;
-	ifstream ("B.txt") >> B;
-	ifstream ("AB.txt") >> D;
+	std::ifstream ("A.txt") >> A;
+	std::ifstream ("B.txt") >> B;
+	std::ifstream ("AB.txt") >> D;
 	REQUIRE((A * B) == D);
 }
 				
