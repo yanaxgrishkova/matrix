@@ -13,9 +13,6 @@ SCENARIO("matrix with params", "[init]")
 	Matrix matrix(2,3);
 	REQUIRE(matrix.line_() == 2);
 	REQUIRE(matrix.column_() == 3);
-	for (int i = 0; i < matrix.line_(); ++i)
-		for (int j = 0; j < matrix.column_(); ++j)
-			REQUIRE(matrix[i][j] == 0;
 }
 				
 SCENARIO("copy", "[init]")
@@ -41,7 +38,7 @@ SCENARIO("*", "[init]")
 	ifstream ("A.txt") >> A;
 	ifstream ("B.txt") >> B;
 	ifstream ("AB.txt") >> D;
-	REQUIRE((A + B) == D);
+	REQUIRE((A * B) == D);
 }
 				
 
