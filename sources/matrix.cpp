@@ -7,7 +7,6 @@ Matrix::Matrix()
 	line = column = 0;
 	this->A = nullptr;
 }
-
 Matrix::Matrix(int a, int b)
 {
 	line = a;
@@ -20,7 +19,6 @@ Matrix::Matrix(int a, int b)
 			A[i][j] = 0;
 	}
 }
-
 Matrix::Matrix(const Matrix &C)
 {
 	line = C.line;
@@ -33,47 +31,24 @@ Matrix::Matrix(const Matrix &C)
 			A[i][j] = C.A[i][j];
 	}
 }
-
 Matrix::~Matrix()
 {
 	for (int i = 0; i < line; ++i)
 		delete[]A[i];
 	delete[]A;
 }
-
 int Matrix::line_()
 {
 	return line;
 }
-
 int Matrix::column_()
 {
 	return column;
 }
-
-void Matrix::scan(string filename)const
+int Matrix::el(int i, int j)
 {
-	ifstream fin;
-	fin.open(filename);
-	if (!fin.is_open())
-		cout << "The file isn't find" << endl;
-	else
-	{
-		for (int i = 0; i < line; ++i)
-		{
-			for (int j = 0; j < column; ++j)
-			{
-				if (!fin.eof())
-				{
-					fin >> A[i][j];
-				}
-				else A[i][j] = 0;
-			}
-		}
-	}
-	fin.close();
+	return A[i][j];
 }
-
 Matrix Matrix::operator + (Matrix B)const
 {
 	Matrix C(line, column);
@@ -84,7 +59,6 @@ Matrix Matrix::operator + (Matrix B)const
 	}
 	return C;
 }
-
 Matrix Matrix::operator * (Matrix B)const
 {
 	Matrix C(line, B.column);
@@ -99,7 +73,6 @@ Matrix Matrix::operator * (Matrix B)const
 	}
 	return C;
 }
-
 Matrix& Matrix:: operator = (const Matrix &C)
 {
 	if (&C == this)
@@ -118,7 +91,6 @@ Matrix& Matrix:: operator = (const Matrix &C)
 	column = C.column;
 	return *this;
 }
-
 const bool Matrix::operator == (const Matrix &C)
 {
 	for (int i = 0; i < line; ++i)
@@ -129,18 +101,17 @@ const bool Matrix::operator == (const Matrix &C)
 		return false;
 	}
 }
-
 ostream& operator << (ostream &out, Matrix &C)
 {
-	for (int i = 0; i < line; ++i)
+
+	for (int i = 0; i < C.line; ++i)
 	{
-		for (int j = 0; j < column; ++j)
+		for (int j = 0; j < C.column; ++j)
 			out << C.A[i][j] << " ";
 		out << endl;
 	}
 	return out;
 }
-
 istream& operator >> (istream &in, Matrix &C)
 {
 	for (int i = 0; i < C.line; ++i)
