@@ -44,6 +44,10 @@ int Matrix::column_()
 {
 	return column;
 }
+int Matrix::el_(int i, int j)
+{
+	return A[i][j];
+}
 int Matrix::el(int i, int j)
 {
 	return A[i][j];
