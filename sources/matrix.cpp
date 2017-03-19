@@ -45,10 +45,6 @@ int Matrix::column_()
 {
 	return column;
 }
-int Matrix::el_(int i, int j)
-{
-	return A[i][j];
-}
 Matrix Matrix::operator + (Matrix B)const
 {
 	Matrix C(line, column);
