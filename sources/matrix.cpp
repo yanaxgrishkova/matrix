@@ -1,5 +1,4 @@
 #include "matrix.hpp"
-#include <string>
 using namespace std;
 
 Matrix::Matrix()
@@ -63,14 +62,12 @@ Matrix Matrix::operator * (Matrix B)const
 {
 	Matrix C(line, B.column);
 	for (int i = 0; i < line; ++i)
-	for (int j = 0; j < B.column; ++j)
-	{
-		C.A[i][j] = 0;
-		for (int k = 0; k < column; ++k)
+		for (int j = 0; j < B.column; ++j)
 		{
-			C.A[i][j] = C.A[i][j] + A[i][k] * B.A[k][j];
+			C.A[i][j] = 0;
+			for (int k = 0; k < column; ++k)
+				C.A[i][j] = C.A[i][j] + A[i][k] * B.A[k][j];
 		}
-	}
 	return C;
 }
 Matrix& Matrix:: operator = (const Matrix &C)
@@ -94,12 +91,12 @@ Matrix& Matrix:: operator = (const Matrix &C)
 const bool Matrix::operator == (const Matrix &C)
 {
 	for (int i = 0; i < line; ++i)
-	for (int j = 0; j < column; ++j)
-	{
-		if (A[i][j] == C.A[i][j])
-			return true;
-		return false;
-	}
+		for (int j = 0; j < column; ++j)
+		{
+			if (A[i][j] == C.A[i][j])
+				return true;
+			return false;
+		}
 }
 ostream& operator << (ostream &out, Matrix &C)
 {
