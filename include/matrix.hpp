@@ -15,7 +15,7 @@ public:
 	~Matrix();
 	int line_();
 	int column_();
-	int el(int i, int j);
+	int el_(int i, int j);
 	Matrix& operator= (const Matrix &C);
 	Matrix operator+ (Matrix B)const;
 	Matrix operator * (Matrix B)const;
