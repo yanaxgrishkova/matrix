@@ -13,8 +13,8 @@ public:
 	Matrix(int a, int b);
 	Matrix(const Matrix &C);
 	~Matrix();
-	int line();
-	int column();
+	int line_();
+	int column_();
 	void scan(string filename)const;
 	Matrix& operator = (const Matrix &C);
 	Matrix operator + (Matrix B)const;
