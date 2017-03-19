@@ -25,7 +25,9 @@ SCENARIO("copy", "[init]")
 				
 SCENARIO("+", "[init]")
 {
-	Matrix A, B, C;
+	Matrix A(2, 2);
+	Matrix B(2, 2);
+	Matrix C(2, 2);
 	std::ifstream ("A.txt") >> A;
 	std::ifstream ("B.txt") >> B;
 	std::ifstream ("A+B.txt") >> C;
@@ -34,7 +36,9 @@ SCENARIO("+", "[init]")
 
 SCENARIO("*", "[init]")
 {
-	Matrix A, B, D;
+	Matrix A(2, 2);
+	Matrix B(2, 2);
+	Matrix C(2, 2);
 	std::ifstream ("A.txt") >> A;
 	std::ifstream ("B.txt") >> B;
 	std::ifstream ("AB.txt") >> D;
