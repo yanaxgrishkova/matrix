@@ -13,8 +13,9 @@ public:
 	Matrix(int a, int b);
 	Matrix(const Matrix &C);
 	~Matrix();
+	int line();
+	int column();
 	void scan(string filename)const;
-	void print(ostream&steam)const;
 	Matrix& operator = (const Matrix &C);
 	Matrix operator + (Matrix B)const;
 	Matrix operator * (Matrix B)const;
