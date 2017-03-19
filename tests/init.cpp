@@ -40,7 +40,7 @@ SCENARIO("*", "[init]")
 	Matrix A, B, D;
 	ifstream ("A.txt") >> A;
 	ifstream ("B.txt") >> B;
-	ifstream ("A*B.txt") >> D;
+	ifstream ("AB.txt") >> D;
 	REQUIRE((A + B) == D);
 }
 				
