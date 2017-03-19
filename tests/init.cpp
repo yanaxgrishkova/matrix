@@ -38,7 +38,7 @@ SCENARIO("*", "[init]")
 {
 	Matrix A(2, 2);
 	Matrix B(2, 2);
-	Matrix C(2, 2);
+	Matrix D(2, 2);
 	std::ifstream ("A.txt") >> A;
 	std::ifstream ("B.txt") >> B;
 	std::ifstream ("AB.txt") >> D;
@@ -54,7 +54,7 @@ SCENARIO("scan", "[init]")
 	REQUIRE(A == B);
 }
 
-SCENARIO("==", [init])
+SCENARIO("==", "[init]")
 {
 	Matrix A(2, 2);
 	Matrix B(2, 2);
@@ -66,7 +66,7 @@ SCENARIO("==", [init])
 	REQUIRE(f == true);
 }
 
-SCENARIO("=", [init])
+SCENARIO("=", "[init]")
 {
 	Matrix A(2, 2);
 	Matrix B;
