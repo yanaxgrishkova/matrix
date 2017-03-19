@@ -1,5 +1,0 @@
-Matrix A, B, C;
-std::ifstream("A.txt") >> A;
-std::ifstream("B.txt") >> B;
-std::ifstream("A+B.txt") >> C;
-REQUIRE (A+B==C);
