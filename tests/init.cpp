@@ -18,35 +18,30 @@ SCENARIO("matrix with params", "[init]")
 			REQUIRE(matrix[i][j] == 0;
 }
 				
+SCENARIO("copy", "[init]")
+{
+	Matrix matrix(2,3);
+	Matrix copy(matrix);
+	REQUIRE(copy.line_() == 2);
+	REQUIRE(copy.column_() == 3);
+}
+				
 SCENARIO("+", "[init]")
 {
-	Matrix A(2, 3);
-	Matrix B(2, 3);
-	Matrix C(2, 3);
-	for (int i = 0; i < 2; ++i)
-		for (int j = 0; j < 3; ++j)
-		{
-			A[i][j] = B[i][j] = 2;
-			C[i][j] = 4;
-		}
+	Matrix A, B, C;
+	ifstream ("A.txt") >> A;
+	ifstream ("B.txt") >> B;
+	ifstream ("A+B.txt") >> C;
 	REQUIRE((A + B) == C);
 }
 
 SCENARIO("*", "[init]")
 {
-	Matrix A(2, 3);
-	Matrix B(3, 2);
-	Matrix C(2, 2);
-	for (int i = 0; i < 2; ++i)
-		for (int j = 0; j < 3; ++j)
-			A[i][j]  = 2;
-	for (int i = 0; i < 3; ++i)
-		for (int j = 0; j < 2; ++j)
-			B[i][j] = 3;
-	for (int i = 0; i < 2; ++i)
-		for (int j = 0; j < 2; ++j)
-			C[i][j] = 24;
-	REQUIRE((A * B) == C);
+	Matrix A, B, D;
+	ifstream ("A.txt") >> A;
+	ifstream ("B.txt") >> B;
+	ifstream ("A*B.txt") >> D;
+	REQUIRE((A + B) == D);
 }
 				
 
