@@ -41,12 +41,12 @@ Matrix::~Matrix()
 	delete[]A;
 }
 
-int Matrix::line()
+int Matrix::line_()
 {
 	return line;
 }
 
-int Matrix::column()
+int Matrix::column_()
 {
 	return column;
 }
