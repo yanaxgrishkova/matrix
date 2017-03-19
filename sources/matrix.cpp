@@ -1,6 +1,4 @@
 #include "matrix.hpp"
-#include <iostream>
-using namespace std;
 
 Matrix::Matrix()
 {
@@ -95,7 +93,7 @@ const bool Matrix::operator == (const Matrix &C)
 			return false;
 		}
 }
-ostream& operator << (ostream &out, Matrix &C)
+ostream& operator << (ostream &out, const Matrix &C)
 {
 
 	for (int i = 0; i < C.line; ++i)
@@ -106,10 +104,33 @@ ostream& operator << (ostream &out, Matrix &C)
 	}
 	return out;
 }
-istream& operator >> (istream &in, Matrix &C)
+istream& operator >> (istream &in, const Matrix &C)
 {
 	for (int i = 0; i < C.line; ++i)
 	for (int j = 0; j < C.column; ++j)
 		in >> C.A[i][j];
 	return in;
+}
+
+void Matrix::scan(string filename)const
+{
+	ifstream fin;
+	fin.open(filename);
+	if (!fin.is_open())
+		cout << "The file isn't find" << endl;
+	else
+	{
+		for (int i = 0; i < line; ++i)
+		{
+			for (int j = 0; j < column; ++j)
+			{
+				if (!fin.eof())
+				{
+					fin >> A[i][j];
+				}
+				else A[i][j] = 0;
+			}
+		}
+	}
+	fin.close();
 }
