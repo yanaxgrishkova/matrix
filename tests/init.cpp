@@ -16,7 +16,7 @@ SCENARIO("constructor with params") {
 SCENARIO("copy constructor") {
 	Matrix matrix (3, 3);	
 	Matrix copy(matrix);	
-	REQUIRE(copy.cols_() == 3);	
 	REQUIRE(copy.rows_() == 3);
+	REQUIRE(copy.cols_() == 3);
 }
 
