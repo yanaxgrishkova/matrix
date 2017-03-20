@@ -21,7 +21,7 @@ SCENARIO("copy constructor") {
 }
 
 
-SCENARIO("copy constructor") {
+SCENARIO("operator +") {
 	Matrix m1 (3, 3);
 	Matrix m2 (3, 3);
 	Matrix m3 (3, 3);	
