@@ -14,8 +14,8 @@ SCENARIO("constructor with params") {
 }
 
 SCENARIO("copy constructor") {
-Matrix matrix (3, 3);	
-complex_t copy(matrix);	
-REQUIRE(copy.cols_() == 3);	
-REQUIRE(copy.rows_() == 3);
+	Matrix matrix (3, 3);	
+	complex_t copy(matrix);	
+	REQUIRE(copy.cols_() == 3);	
+	REQUIRE(copy.rows_() == 3);
 }
