@@ -40,3 +40,9 @@ SCENARIO("operator *") {
 	std::ifstream("m1 x m2.txt") >> m3;
 	REQUIRE(m1 * m2 == m3);
 }
+
+SCENARIO("operator =") {
+	Matrix m1(3, 3);
+	Matrix m2 = m1;
+	REQUIRE(m1 == m2);
+}
