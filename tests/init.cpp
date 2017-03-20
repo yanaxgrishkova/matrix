@@ -46,3 +46,9 @@ SCENARIO("operator =") {
 	Matrix m2 = m1;
 	REQUIRE(m1 == m2);
 }
+
+SCENARIO("operator ==") {
+	Matrix m1(3, 3);
+	Matrix m2(3, 3);
+	REQUIRE(m1 == m2);
+}
