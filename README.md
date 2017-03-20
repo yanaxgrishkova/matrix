@@ -7,7 +7,6 @@ matrix methods:
 - [x] columns
 - [x] default constructor
 - [x] constructor with params
-- [ ] scan
 - [x] operator +
 - [x] operator *
 - [x] operator =
