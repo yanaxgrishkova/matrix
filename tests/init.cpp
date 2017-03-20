@@ -1,8 +1,8 @@
 #include <matrix.hpp>
 #include <catch.hpp>
 
-SCENARIO("matrix init", "[init]") {
-	matrix_t matrix;
-	REQUIRE(matrix.rows() == 0);
-	REQUIRE(matrix.columns() == 0);
+SCENARIO("default constructor") {
+	Matrix matrix;
+	REQUIRE(matrix.rows_() == 0);
+	REQUIRE(matrix.cols_() == 0);
 }
