@@ -1,15 +1,159 @@
 #include "matrix.hpp"
 
-matrix_t::matrix_t() noexcept : rows_{0}, columns_{0}, elements_{nullptr}
+int Matrix::cols_()
 {
+	return cols;
 }
 
-auto matrix_t::rows() -> unsigned int
+int Matrix::rows_()
 {
-    return rows_;
+	return rows;
 }
 
-auto matrix_t::columns() -> unsigned int
+Matrix::Matrix()
 {
-    return columns_;
+	cols = 0;
+	rows = 0;
+	Arr = new int*[rows];
+	for (int i = 0; i < rows; i++){
+		Arr[i] = new int[cols];
+	}
+}
+
+Matrix::Matrix(int _cols, int _rows)
+{
+	cols = _cols;
+	rows = _rows;
+	Arr = new int*[rows];
+	for (int i = 0; i < rows; ++i){
+		Arr[i] = new int[cols];
+		for (int j = 0; j < cols; ++j){
+			Arr[i][j] = 0;
+		}
+	}
+}
+
+Matrix::Matrix(const Matrix&result)
+{
+	cols = result.cols;
+	rows = result.rows;
+	Arr = new int*[rows];
+	for (int i = 0; i < rows; ++i){
+		Arr[i] = new int[cols];
+		for (int j = 0; j < cols; ++j){
+			Arr[i][j] = result.Arr[i][j];
+		}
+	}
+}
+
+Matrix::~Matrix()
+{
+	for (int i = 0; i < rows; ++i){
+		delete[]Arr[i];
+	}
+	delete[]Arr;
+}
+
+istream& operator >> (istream& infile, const Matrix& result)
+{
+		for (int i = 0; i < result.rows; i++)
+			for (int j = 0; j < result.cols; j++)
+				infile >> result.Arr[i][j];
+		return infile;
+}
+
+void Matrix::scan(string filename)
+{
+	ifstream infile;
+	infile.open(filename);
+	if (!infile.is_open())
+		cout << "Error! Please, try again!" << endl;
+	else
+	{
+		Arr = new int*[rows];
+		for (int i = 0; i < rows; i++){
+			Arr[i] = new int[cols];
+			for (int j = 0; j < cols; j++){
+				infile >> Arr[i][j];
+			}
+		}
+	}
+	infile.close();
+}
+
+ostream& operator << (ostream& outfile, const Matrix& result)
+{
+	for (int i = 0; i < result.rows; i++){
+		for (int j = 0; j < result.cols; j++){
+			outfile << result.Arr[i][j] << " ";
+		}
+	}
+		outfile << endl;
+		return outfile;
+}
+
+bool Matrix::operator == (const Matrix& m2) const
+{
+	bool k = false;
+	for (int i = 0; i < rows; i++){
+		for (int j = 0; j < cols; j++){
+			if (Arr[i][j] == m2.Arr[i][j])
+				k = true;
+		}
+	}
+	return k;
+}
+
+Matrix Matrix::operator + (const Matrix& m2) const
+{
+	if ((cols != m2.cols) || (rows != m2.rows)) {
+		cout << "Error!";
+	}
+	else {
+		Matrix result(cols, rows);
+		for (int i = 0; i < rows; ++i){
+			for (int j = 0; j < cols; ++j){
+				result.Arr[i][j] = Arr[i][j] + m2.Arr[i][j];
+			}
+		}
+		return result;
+	}
+}
+
+Matrix Matrix::operator * (const Matrix& m2) const
+{
+	if (m2.rows != cols){
+		cout << "Error!";
+	}
+	else {
+		Matrix result(rows, m2.cols);
+		for (int i = 0; i < rows; i++){
+			for (int j = 0; j < m2.cols; j++){
+				for (int k = 0; k < cols; k++){
+					result.Arr[i][j] += Arr[i][k] * m2.Arr[k][j];
+				}
+			}
+		}
+		return result;
+	}
+}
+
+Matrix& Matrix::operator = (const Matrix& result)
+{
+	if (&result != this){
+		for (int i = 0; i < rows; i++){
+			delete[] Arr[i];
+		}
+		delete[] Arr;
+	}
+	rows = result.rows;
+	cols = result.cols;
+	Arr = new int*[rows];
+	for (int i = 0; i < rows; i++){
+		Arr[i] = new int[cols];
+		for (int j = 0; j < cols; j++){
+			Arr[i][j] = result.Arr[i][j];
+		}
+	}
+	return *this;
 }
