@@ -33,7 +33,7 @@ Matrix::Matrix(int _cols, int _rows)
 	}
 }
 
-Matrix::Matrix(const Matrix&result)
+Matrix::Matrix(const Matrix& result)
 {
 	cols = result.cols;
 	rows = result.rows;
