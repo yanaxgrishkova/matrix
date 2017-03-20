@@ -23,13 +23,9 @@ public:
 
 	int rows_();
 
-	Matrix get();
+	void scan(string filename);
 
-	void scan(string filename) const;
-
-	void print(ostream&cout) const;
-
-	const bool operator == (const Matrix& m2);
+	bool operator == (const Matrix& m2) const;
 
 	Matrix operator + (const Matrix& m2) const;
 
