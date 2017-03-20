@@ -6,9 +6,12 @@ matrix methods:
 - [x] rows
 - [x] columns
 - [x] default constructor
-- [ ] constructor with params
-- [ ] destructor
-- [ ] fill
-- [ ] print
-- [ ] operator +
-- [ ] operator *
+- [x] constructor with params
+- [ ] scan
+- [x] operator +
+- [x] operator *
+- [ ] operator =
+- [ ] operator ==
+- [ ] operator <<
+- [ ] operator >>
+
