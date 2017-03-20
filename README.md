@@ -5,6 +5,7 @@
 matrix methods:
 - [x] rows
 - [x] columns
+- [x] scan
 - [x] default constructor
 - [x] constructor with params
 - [x] operator +
