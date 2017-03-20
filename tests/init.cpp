@@ -56,7 +56,7 @@ SCENARIO("operator ==") {
 SCENARIO("scan") {
 	Matrix m1(3, 3);
 	Matrix m2(3, 3);
-	std::ifstream(m1.txt) >> m1;
-	m2.scan(m1.txt);
+	std::ifstream("m1.txt") >> m1;
+	m2.scan("m1.txt");
 	REQUIRE(m1 == m2);
 }
