@@ -12,6 +12,3 @@ matrix methods:
 - [x] operator *
 - [x] operator =
 - [x] operator ==
-- [ ] operator <<
-- [ ] operator >>
-
