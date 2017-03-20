@@ -10,8 +10,8 @@ matrix methods:
 - [ ] scan
 - [x] operator +
 - [x] operator *
-- [ ] operator =
-- [ ] operator ==
+- [x] operator =
+- [x] operator ==
 - [ ] operator <<
 - [ ] operator >>
 
