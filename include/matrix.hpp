@@ -15,7 +15,7 @@ public:
 
 	Matrix(int _cols, int _rows);
 
-	Matrix(const Matrix&result);
+	Matrix(const Matrix& result);
 
 	~Matrix();
 
