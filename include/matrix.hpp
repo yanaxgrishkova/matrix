@@ -23,7 +23,7 @@ public:
 
 	int rows_() const;
 
-	void scan(string filename);
+	void scan(string filename) const;
 
 	bool operator == (const Matrix& m2) const;
 
@@ -33,7 +33,7 @@ public:
 
 	Matrix& operator = (const Matrix& result);
 
-	friend ostream& operator << (ostream& outfile, const Matrix& result);
+	friend ostream& operator << (ostream& outfile, Matrix& result);
 
-	friend istream& operator >> (istream& infile, const Matrix& result);
+	friend istream& operator >> (istream& infile, Matrix& result);
 };
