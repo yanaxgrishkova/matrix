@@ -27,9 +27,9 @@ public:
 
 	bool operator == (const Matrix& m2) const;
 
-	Matrix operator + (const Matrix& m2) const;
+	Matrix& operator + (const Matrix& m2) const;
 
-	Matrix operator * (const Matrix& m2) const;
+	Matrix& operator * (const Matrix& m2) const;
 
 	Matrix& operator = (const Matrix& result);
 
