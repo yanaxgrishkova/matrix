@@ -104,7 +104,7 @@ bool Matrix::operator == (const Matrix& m2) const
 	return k;
 }
 
-Matrix& Matrix::operator + (const Matrix& m2) const
+Matrix Matrix::operator + (const Matrix& m2) const
 {
 	if ((cols != m2.cols) || (rows != m2.rows)) {
 		cout << "Error!";
@@ -120,7 +120,7 @@ Matrix& Matrix::operator + (const Matrix& m2) const
 	}
 }
 
-Matrix& Matrix::operator * (const Matrix& m2) const
+Matrix Matrix::operator * (const Matrix& m2) const
 {
 	if (m2.rows != cols){
 		cout << "Error!";
