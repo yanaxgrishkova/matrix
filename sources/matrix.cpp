@@ -62,7 +62,7 @@ istream& operator >> (istream& infile, Matrix& result)
 		return infile;
 }
 
-void Matrix::scan(string filename)
+void Matrix::scan(string filename) const
 {
 	ifstream infile;
 	infile.open(filename);
@@ -81,7 +81,7 @@ void Matrix::scan(string filename)
 	infile.close();
 }
 
-ostream& operator << (ostream& outfile, Matrix& result)
+ostream& operator << (ostream& outfile, const Matrix& result)
 {
 	for (int i = 0; i < result.rows; i++){
 		for (int j = 0; j < result.cols; j++){
@@ -92,7 +92,7 @@ ostream& operator << (ostream& outfile, Matrix& result)
 		return outfile;
 }
 
-bool Matrix::operator == (const Matrix& m2)
+bool Matrix::operator == (const Matrix& m2) const
 {
 	bool k = false;
 	for (int i = 0; i < rows; i++){
