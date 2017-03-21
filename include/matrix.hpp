@@ -19,9 +19,9 @@ public:
 
 	~Matrix();
 
-	int cols_();
+	int cols_() const;
 
-	int rows_();
+	int rows_() const;
 
 	void scan(string filename);
 
