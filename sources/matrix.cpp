@@ -1,11 +1,11 @@
 #include "matrix.hpp"
 
-int Matrix::cols_()
+int Matrix::cols_() const
 {
 	return cols;
 }
 
-int Matrix::rows_()
+int Matrix::rows_() const
 {
 	return rows;
 }
