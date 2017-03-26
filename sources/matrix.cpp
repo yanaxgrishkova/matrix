@@ -10,15 +10,8 @@ int Matrix::rows_() const
 	return rows;
 }
 
-Matrix::Matrix()
-{
-	cols = 0;
-	rows = 0;
-	Arr = new int*[rows];
-	for (int i = 0; i < rows; i++){
-		Arr[i] = new int[cols];
-	}
-}
+Matrix::Matrix(): cols(0), rows(0), Arr(nullptr)
+{}
 
 Matrix::Matrix(int _cols, int _rows)
 {
@@ -62,7 +55,7 @@ istream& operator >> (istream& infile, Matrix& result)
 		return infile;
 }
 
-void Matrix::scan(string filename)
+void Matrix::scan(string filename) const 
 {
 	ifstream infile;
 	infile.open(filename);
@@ -70,9 +63,7 @@ void Matrix::scan(string filename)
 		cout << "Error! Please, try again!" << endl;
 	else
 	{
-		Arr = new int*[rows];
 		for (int i = 0; i < rows; i++){
-			Arr[i] = new int[cols];
 			for (int j = 0; j < cols; j++){
 				infile >> Arr[i][j];
 			}
@@ -94,14 +85,14 @@ ostream& operator << (ostream& outfile, const Matrix& result)
 
 bool Matrix::operator == (const Matrix& m2) const
 {
-	bool k = false;
 	for (int i = 0; i < rows; i++){
 		for (int j = 0; j < cols; j++){
-			if (Arr[i][j] == m2.Arr[i][j])
-				k = true;
+			if (Arr[i][j] == m2.Arr[i][j]){
+				return true;
+			}
+			return false;
 		}
 	}
-	return k;
 }
 
 Matrix Matrix::operator + (const Matrix& m2) const
@@ -140,20 +131,21 @@ Matrix Matrix::operator * (const Matrix& m2) const
 
 Matrix& Matrix::operator = (const Matrix& result)
 {
-	if (&result != this){
-		for (int i = 0; i < rows; i++){
-			delete[] Arr[i];
-		}
-		delete[] Arr;
+	if (&result == this){
+		return *this;
+	}
+	for (int i = 0; i < rows; i++){
+		delete[]Arr[i];
+	}
+	delete[]Arr;
+	Arr = new int*[result.rows];
+	for (int i = 0; i < result.rows; i++)
+	{
+		Arr[i] = new int[result.cols];
+		for (int j = 0; j < result.cols; j++)
+			Arr[i][j] = result.Arr[i][j];
 	}
 	rows = result.rows;
 	cols = result.cols;
-	Arr = new int*[rows];
-	for (int i = 0; i < rows; i++){
-		Arr[i] = new int[cols];
-		for (int j = 0; j < cols; j++){
-			Arr[i][j] = result.Arr[i][j];
-		}
-	}
 	return *this;
 }
