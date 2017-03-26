@@ -23,7 +23,7 @@ public:
 
 	int rows_() const;
 
-	void scan(string filename);
+	void scan(string filename) const;
 
 	bool operator == (const Matrix& m2) const;
 
